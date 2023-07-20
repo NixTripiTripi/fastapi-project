@@ -6,9 +6,13 @@ jobs:
     job1:
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout
-            uses: actions/checkout@v3.5.3
           - name: pulling git repo
-            uses: actions/checkout@v2
-          - name: say hi to me Nicola
-            run: echo "hello mate!"
+            uses: actions/checkout@v3.5.3
+          - name: install python version 3.9
+            uses: actions/setup-python@v2
+            with:
+              python-version: "3.9"
+          - name: upgrade pip
+            run: python -m pip install --upgrade pip
+          - name: install all dependeces
+            run: pip install -r requirements.txt
